@@ -4,7 +4,7 @@ class Main extends Phaser.Scene {
     preload() {
         this.load.spritesheet('plane', 'assets/planesheet.png', {frameWidth: 98, frameHeight: 83});
         this.load.image('pipe', 'assets/pipe.png');
-        this.load.audio('jump', 'assets/jump.wav');
+        this.load.audio('jumpSound', 'assets/jump.wav');
     }
 
     //  it runs once at the beginning of the game and
@@ -24,6 +24,9 @@ class Main extends Phaser.Scene {
         frameRate: 10,
         repeat: -1
     });
+
+    this.jumpSound = this.sound.add('jumpSound');
+
     this.plane.play("planeAnimation");
     
     this.plane.body.gravity.y = 1000;
@@ -60,6 +63,8 @@ class Main extends Phaser.Scene {
     }
 
     jump() {
+        this.jumpSound.play();
+        
         this.tweens.add({
             targets: this.plane,
             angle: -20,
@@ -98,6 +103,7 @@ class Main extends Phaser.Scene {
     this.pipes.children.each(function(pipe) {
         pipe.body.velocity.x = 0;
     });
+    this.scene.restart();
 }
 }
 
@@ -114,5 +120,6 @@ const config = {
         }
     }
 };
+
 
 const game = new Phaser.Game(config);
