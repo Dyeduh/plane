@@ -2,9 +2,9 @@ class Main extends Phaser.Scene {
 
     // This function essentially loads things into our game
     preload() {
-        this.load.spritesheet('plane', 'planesheet.png', {frameWidth: 98, frameHeight: 83});
-        this.load.image('pipe', 'pipe.png');
-        this.load.audio('jumpSound', 'jump.wav');
+        this.load.spritesheet('plane', 'assets/planesheet.png', {frameWidth: 98, frameHeight: 83});
+        this.load.image('pipe', 'assets/pipe.png');
+        this.load.audio('jumpSound', 'assets/jump.wav');
     }
 
     //  it runs once at the beginning of the game and
